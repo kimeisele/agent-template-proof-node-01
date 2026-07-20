@@ -1,7 +1,10 @@
 {
   "authority_feed_manifest_url": "https://raw.githubusercontent.com/kimeisele/agent-template-proof-node-01/authority-feed/latest-authority-manifest.json",
   "capabilities": [
-    "authority-publishing"
+    "authority-publishing",
+    "research-synthesis",
+    "cross-domain-analysis",
+    "open-inquiry"
   ],
   "display_name": "Agent Template Proof Node 01",
   "endpoints": {

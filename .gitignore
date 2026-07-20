@@ -8,3 +8,4 @@ __pycache__/
 data/federation/.node_keys.json
 dist/
 *.egg-info/
+.venv*

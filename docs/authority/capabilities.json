@@ -1,24 +1,35 @@
 {
   "capabilities": {},
   "city": {
-    "element": "Vayu (Air)",
-    "zone": "general"
+    "element": "Jala (Water)",
+    "zone": "research"
   },
-  "description": "Agent Template \u2014 a federation node",
-  "display_name": "Agent Template",
+  "description": "External Federation Proof Node 01 \u2014 a federation node",
+  "display_name": "External Federation Proof Node 01",
   "federation_interfaces": {
-    "consumes": [],
+    "consumes": [
+      "research_question",
+      "raw_data_feed",
+      "domain_observation",
+      "inquiry_request",
+      "peer_review_challenge"
+    ],
     "produces": [
       "authority_document",
-      "canonical_surface"
+      "research_synthesis",
+      "cross_domain_report",
+      "meta_analysis_report",
+      "open_dataset"
     ],
     "protocols": [
-      "authority_feed_v1"
+      "authority_feed_v1",
+      "open_inquiry_v1",
+      "peer_review_v1"
     ]
   },
   "kind": "agent_capability_manifest",
-  "node_id": "agent-template",
-  "node_role": "agent_template_relay",
+  "node_id": "agent-template-proof-node-01",
+  "node_role": "agent_template_proof_node_01_research",
   "protocols": [
     {
       "descriptor": ".well-known/agent-federation.json",
@@ -36,6 +47,21 @@
       "description": "Authority Publishing capability.",
       "id": "authority-publishing",
       "name": "Authority Publishing"
+    },
+    {
+      "description": "Research Synthesis capability.",
+      "id": "research-synthesis",
+      "name": "Research Synthesis"
+    },
+    {
+      "description": "Cross Domain Analysis capability.",
+      "id": "cross-domain-analysis",
+      "name": "Cross Domain Analysis"
+    },
+    {
+      "description": "Open Inquiry capability.",
+      "id": "open-inquiry",
+      "name": "Open Inquiry"
     }
   ],
   "version": 1

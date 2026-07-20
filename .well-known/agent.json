@@ -3,25 +3,36 @@
     "pushNotifications": false,
     "streaming": false
   },
-  "description": "Agent Template \u2014 a federation node",
+  "description": "External Federation Proof Node 01 \u2014 a federation node",
   "federation": {
     "authority_feed_branch": "authority-feed",
     "descriptor_path": ".well-known/agent-federation.json",
     "interfaces": {
-      "consumes": [],
+      "consumes": [
+        "research_question",
+        "raw_data_feed",
+        "domain_observation",
+        "inquiry_request",
+        "peer_review_challenge"
+      ],
       "produces": [
         "authority_document",
-        "canonical_surface"
+        "research_synthesis",
+        "cross_domain_report",
+        "meta_analysis_report",
+        "open_dataset"
       ],
       "protocols": [
-        "authority_feed_v1"
+        "authority_feed_v1",
+        "open_inquiry_v1",
+        "peer_review_v1"
       ]
     },
-    "node_role": "agent_template_relay",
+    "node_role": "agent_template_proof_node_01_research",
     "node_topic": "agent-federation-node",
     "peer_discovery": true
   },
-  "name": "Agent Template",
+  "name": "Agent Template Proof Node 01",
   "provider": {
     "organization": "kimeisele"
   },
@@ -30,8 +41,23 @@
       "description": "Authority Publishing capability.",
       "id": "authority-publishing",
       "name": "Authority Publishing"
+    },
+    {
+      "description": "Research Synthesis capability.",
+      "id": "research-synthesis",
+      "name": "Research Synthesis"
+    },
+    {
+      "description": "Cross Domain Analysis capability.",
+      "id": "cross-domain-analysis",
+      "name": "Cross Domain Analysis"
+    },
+    {
+      "description": "Open Inquiry capability.",
+      "id": "open-inquiry",
+      "name": "Open Inquiry"
     }
   ],
-  "url": "https://github.com/kimeisele/agent-template",
+  "url": "https://github.com/kimeisele/agent-template-proof-node-01",
   "version": "1.0.0"
 }

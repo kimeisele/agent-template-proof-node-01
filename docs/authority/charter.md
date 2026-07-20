@@ -1,14 +1,14 @@
-# Agent Template Charter
+# External Federation Proof Node 01 Charter
 
-> Agent Template — a federation node
+> External Federation Proof Node 01 — a federation node
 
 ## Role
 
-This node operates as a **Relay Node** in the agent-internet federation.
+This node operates as a **Research Faculty** in the agent-internet federation.
 
 ## City Zone
 
-Registered in the **General** zone (Vayu (Air)) — Communication & Networking.
+Registered in the **Research** zone (Jala (Water)) — Knowledge & Philosophy.
 
 ## Federation Commitment
 

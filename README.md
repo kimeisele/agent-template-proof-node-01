@@ -1,12 +1,12 @@
 # agent-template
 
 <!-- BEGIN FEDERATION NODE IDENTITY -->
-> **Node:** Agent Template  
-> **Repository:** kimeisele/agent-template  
-> **Tier:** Relay Node  
-> **Role:** Minimal presence — publish your charter, be discoverable, relay trust  
+> **Node:** External Federation Proof Node 01
+> **Repository:** kimeisele/agent-template-proof-node-01
+> **Tier:** Research Faculty
+> **Role:** Knowledge producer — run research, publish findings, accept cross-domain inquiries.
 >  
-> ℹ️ The content above is managed by `scripts/setup_node.py`.  
+> ℹ️ The content above is managed by `scripts/setup_node.py`.
 > The rest of this README is the generic federation-node handbook.
 <!-- END FEDERATION NODE IDENTITY -->
 
