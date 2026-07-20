@@ -1,0 +1,42 @@
+{
+  "capabilities": {},
+  "city": {
+    "element": "Vayu (Air)",
+    "zone": "general"
+  },
+  "description": "Agent Template \u2014 a federation node",
+  "display_name": "Agent Template",
+  "federation_interfaces": {
+    "consumes": [],
+    "produces": [
+      "authority_document",
+      "canonical_surface"
+    ],
+    "protocols": [
+      "authority_feed_v1"
+    ]
+  },
+  "kind": "agent_capability_manifest",
+  "node_id": "agent-template",
+  "node_role": "agent_template_relay",
+  "protocols": [
+    {
+      "descriptor": ".well-known/agent-federation.json",
+      "name": "agent-federation",
+      "version": 1
+    },
+    {
+      "descriptor": ".well-known/agent.json",
+      "name": "a2a-agent-card",
+      "version": "1.0.0"
+    }
+  ],
+  "skills": [
+    {
+      "description": "Authority Publishing capability.",
+      "id": "authority-publishing",
+      "name": "Authority Publishing"
+    }
+  ],
+  "version": 1
+}

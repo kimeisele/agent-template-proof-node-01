@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.authority-feed-out/
+.federation/
+.federation-setup.json
+.agent-internet/
+# Node crypto keys — never commit
+data/federation/.node_keys.json
+dist/
+*.egg-info/

@@ -1,0 +1,37 @@
+name: Federation Discovery
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"       # weekly on Monday at 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  discover-peers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Discover federation peers
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/discover_federation_peers.py --output .federation/peers.json --repo "$GITHUB_REPOSITORY"
+
+      - name: Fetch and verify peer authority feeds
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -f .federation/peers.json ]; then
+            python scripts/fetch_peer_authority.py --peers .federation/peers.json --output-dir .federation/peer-feeds
+          fi
+
+      - name: Commit discovery results
+        run: |
+          git config user.name "federation-bot"
+          git config user.email "bot@federation"
+          git add .federation/peers.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "[skip ci] Update federation peer registry"
+          git push origin HEAD:${GITHUB_REF_NAME}

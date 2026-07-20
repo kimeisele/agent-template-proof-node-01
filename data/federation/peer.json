@@ -1,0 +1,23 @@
+{
+  "identity": {
+    "city_id": "agent-template",
+    "slug": "agent-template",
+    "repo": "kimeisele/agent-template",
+    "public_key": ""
+  },
+  "endpoint": {
+    "city_id": "agent-template",
+    "transport": "filesystem",
+    "location": "data/federation"
+  },
+  "capabilities": [
+    "scaffolding",
+    "federation_relay"
+  ],
+  "nadi": {
+    "outbox": "data/federation/nadi_outbox.json",
+    "inbox": "data/federation/nadi_inbox.json",
+    "reports": "data/federation/reports/",
+    "directives": "data/federation/directives/"
+  }
+}

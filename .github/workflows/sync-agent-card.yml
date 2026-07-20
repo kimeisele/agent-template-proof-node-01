@@ -1,0 +1,27 @@
+name: Sync Agent Card
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - ".well-known/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-agent-card:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Render Agent Card
+        run: python scripts/render_agent_card.py --output .well-known/agent.json
+      - name: Commit if changed
+        run: |
+          git config user.name "federation-bot"
+          git config user.email "bot@federation"
+          git add .well-known/agent.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "[skip ci] Sync agent card"
+          git push origin HEAD:${GITHUB_REF_NAME}

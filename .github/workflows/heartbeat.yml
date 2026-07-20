@@ -1,0 +1,120 @@
+name: Node Heartbeat
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/15 * * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: heartbeat
+  cancel-in-progress: false
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install core validation dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+
+      - name: Core validation
+        run: |
+          python -m pytest tests/ -q --tb=short
+          ruff check .
+
+      - name: Check optional federation configuration
+        id: federation-config
+        env:
+          FEDERATION_PAT: ${{ secrets.FEDERATION_PAT }}
+          NODE_PRIVATE_KEY: ${{ secrets.NODE_PRIVATE_KEY }}
+        run: |
+          python scripts/heartbeat_workflow_guard.py > federation-status.json
+          STATUS="$(python -c 'import json,sys; print(json.load(open("federation-status.json"))["status"])')"
+
+          case "$STATUS" in
+            REMOTE_ENABLED)
+              echo "remote-enabled=true" >> "$GITHUB_OUTPUT"
+              ;;
+            REMOTE_DISABLED_MISSING_PAT)
+              echo "remote-enabled=false" >> "$GITHUB_OUTPUT"
+              echo "::notice ::Remote federation relay skipped: FEDERATION_PAT is not configured."
+              ;;
+            REMOTE_DISABLED_MISSING_NODE_KEY)
+              echo "remote-enabled=false" >> "$GITHUB_OUTPUT"
+              echo "::notice ::Signed remote heartbeat skipped: NODE_PRIVATE_KEY is not configured."
+              ;;
+            *)
+              echo "::error ::Unknown federation guard state: $STATUS"
+              exit 1
+              ;;
+          esac
+
+      - name: Verify hub access (PAT read postcondition)
+        if: steps.federation-config.outputs.remote-enabled == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.FEDERATION_PAT }}
+        run: |
+          RESULT="$(gh api repos/kimeisele/steward-federation --jq '.full_name')"
+          if [ "$RESULT" != "kimeisele/steward-federation" ]; then
+            echo "::error ::Cannot verify hub access. Expected kimeisele/steward-federation, got: $RESULT"
+            exit 1
+          fi
+          echo "Hub access verified: $RESULT"
+
+      - name: Install nadi-kit
+        if: steps.federation-config.outputs.remote-enabled == 'true'
+        run: |
+          pip install "nadi-kit @ git+https://github.com/kimeisele/steward-federation.git@c613577b7353d3cb1fd31be542aed8766f195079"
+
+      - name: Initial NADI sync
+        if: steps.federation-config.outputs.remote-enabled == 'true'
+        env:
+          NODE_PRIVATE_KEY: ${{ secrets.NODE_PRIVATE_KEY }}
+          GH_TOKEN: ${{ secrets.FEDERATION_PAT }}
+        run: |
+          python3 -m nadi_kit --peer-json data/federation/peer.json sync
+
+      - name: Emit signed heartbeat
+        if: steps.federation-config.outputs.remote-enabled == 'true'
+        env:
+          NODE_PRIVATE_KEY: ${{ secrets.NODE_PRIVATE_KEY }}
+          GH_TOKEN: ${{ secrets.FEDERATION_PAT }}
+        run: |
+          python3 -m nadi_kit --peer-json data/federation/peer.json heartbeat --health 1.0
+
+      - name: Capture heartbeat proof
+        if: steps.federation-config.outputs.remote-enabled == 'true'
+        run: |
+          python scripts/heartbeat_postcondition.py capture \
+            --outbox data/federation/nadi_outbox.json \
+            --output heartbeat-proof.json
+
+      - name: Final NADI sync
+        if: steps.federation-config.outputs.remote-enabled == 'true'
+        env:
+          NODE_PRIVATE_KEY: ${{ secrets.NODE_PRIVATE_KEY }}
+          GH_TOKEN: ${{ secrets.FEDERATION_PAT }}
+        run: |
+          python3 -m nadi_kit --peer-json data/federation/peer.json sync
+
+      - name: Verify hub postcondition
+        if: steps.federation-config.outputs.remote-enabled == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.FEDERATION_PAT }}
+        run: |
+          python scripts/heartbeat_postcondition.py verify \
+            --proof heartbeat-proof.json

@@ -1,0 +1,37 @@
+{
+  "capabilities": {
+    "pushNotifications": false,
+    "streaming": false
+  },
+  "description": "Agent Template \u2014 a federation node",
+  "federation": {
+    "authority_feed_branch": "authority-feed",
+    "descriptor_path": ".well-known/agent-federation.json",
+    "interfaces": {
+      "consumes": [],
+      "produces": [
+        "authority_document",
+        "canonical_surface"
+      ],
+      "protocols": [
+        "authority_feed_v1"
+      ]
+    },
+    "node_role": "agent_template_relay",
+    "node_topic": "agent-federation-node",
+    "peer_discovery": true
+  },
+  "name": "Agent Template",
+  "provider": {
+    "organization": "kimeisele"
+  },
+  "skills": [
+    {
+      "description": "Authority Publishing capability.",
+      "id": "authority-publishing",
+      "name": "Authority Publishing"
+    }
+  ],
+  "url": "https://github.com/kimeisele/agent-template",
+  "version": "1.0.0"
+}

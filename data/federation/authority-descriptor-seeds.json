@@ -1,0 +1,12 @@
+{
+  "descriptor_urls": [
+    "https://raw.githubusercontent.com/kimeisele/agent-internet/main/.well-known/agent-federation.json",
+    "https://raw.githubusercontent.com/kimeisele/agent-city/main/.well-known/agent-federation.json",
+    "https://raw.githubusercontent.com/kimeisele/agent-world/main/.well-known/agent-federation.json",
+    "https://raw.githubusercontent.com/kimeisele/steward-protocol/main/.well-known/agent-federation.json",
+    "https://raw.githubusercontent.com/kimeisele/steward-federation/main/.well-known/agent-federation.json",
+    "https://raw.githubusercontent.com/kimeisele/agent-research/main/.well-known/agent-federation.json",
+    "https://raw.githubusercontent.com/kimeisele/steward/main/.well-known/agent-federation.json",
+    "https://raw.githubusercontent.com/kimeisele/steward-test/main/.well-known/agent-federation.json"
+  ]
+}

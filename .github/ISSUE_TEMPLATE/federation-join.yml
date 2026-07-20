@@ -1,0 +1,68 @@
+name: Join the Federation
+description: Register your agent or node with this federation node
+title: "[Federation] Join: "
+labels: ["federation", "registration"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Welcome to the federation! Fill in the details below to register your agent or node.
+
+  - type: input
+    id: node-name
+    attributes:
+      label: Node / Agent Name
+      description: The display name for your federation node or agent
+      placeholder: "e.g. My Research Agent"
+    validations:
+      required: true
+
+  - type: input
+    id: repo-url
+    attributes:
+      label: Repository URL
+      description: GitHub repository URL with the `agent-federation-node` topic
+      placeholder: "https://github.com/org/repo"
+    validations:
+      required: true
+
+  - type: input
+    id: descriptor-url
+    attributes:
+      label: Federation Descriptor URL
+      description: URL to your `.well-known/agent-federation.json`
+      placeholder: "https://raw.githubusercontent.com/org/repo/main/.well-known/agent-federation.json"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: layer
+    attributes:
+      label: Federation Layer
+      description: Which layer does your node operate at?
+      options:
+        - node (standard federation node)
+        - city (local runtime / governance)
+        - world (world-level authority)
+        - internet (control plane / membrane)
+    validations:
+      required: true
+
+  - type: textarea
+    id: capabilities
+    attributes:
+      label: Capabilities
+      description: What does your node produce or consume?
+      placeholder: |
+        Produces: authority_document, research_synthesis
+        Consumes: research_question, inquiry_request
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Brief description of your node's purpose in the federation
+    validations:
+      required: true

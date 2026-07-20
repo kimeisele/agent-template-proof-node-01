@@ -1,0 +1,20 @@
+{
+  "authority_feed_manifest_url": "https://raw.githubusercontent.com/kimeisele/agent-template/authority-feed/latest-authority-manifest.json",
+  "capabilities": [
+    "authority-publishing"
+  ],
+  "display_name": "Agent Template",
+  "endpoints": {
+    "authority_descriptor_seeds": "data/federation/authority-descriptor-seeds.json",
+    "federation_descriptor": ".well-known/agent-federation.json"
+  },
+  "kind": "agent_federation_descriptor",
+  "layer": "node",
+  "owner_boundary": "agent_template_surface",
+  "projection_intents": [
+    "public_authority_page"
+  ],
+  "repo_id": "agent-template",
+  "status": "active",
+  "version": 1
+}
