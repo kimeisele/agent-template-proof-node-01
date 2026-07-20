@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "source": "ag_0e5dbcaec5f95d57",
+    "target": "steward",
+    "operation": "proof.external_acceptance",
+    "payload": {
+      "proof": "gate-6",
+      "value": 1
+    },
+    "timestamp": 1784573604.984137,
+    "priority": 5,
+    "correlation_id": "",
+    "ttl_s": 600.0,
+    "id": "46f4ad71-423b-4531-8d7a-9402a5ff47ac",
+    "payload_hash": "539b256ce82bb44a1a726dfd8bbc420ef1327c141b55884dbab05afd07d1de27",
+    "signature": "2gQ5bjOKB6QbAU6/4/Dnjaty2s+yf53fM3Byk6w21ne292hiJMw/dXjUJl4yaPZANjR0rUhny6VNHvNngLn9Bg=="
+  }
+]
