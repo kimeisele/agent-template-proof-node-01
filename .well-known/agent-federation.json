@@ -1,20 +1,20 @@
 {
-  "authority_feed_manifest_url": "https://raw.githubusercontent.com/kimeisele/agent-template/authority-feed/latest-authority-manifest.json",
+  "authority_feed_manifest_url": "https://raw.githubusercontent.com/kimeisele/agent-template-proof-node-01/authority-feed/latest-authority-manifest.json",
   "capabilities": [
     "authority-publishing"
   ],
-  "display_name": "Agent Template",
+  "display_name": "Agent Template Proof Node 01",
   "endpoints": {
     "authority_descriptor_seeds": "data/federation/authority-descriptor-seeds.json",
     "federation_descriptor": ".well-known/agent-federation.json"
   },
   "kind": "agent_federation_descriptor",
   "layer": "node",
-  "owner_boundary": "agent_template_surface",
+  "owner_boundary": "agent_template_proof_node_01_surface",
   "projection_intents": [
     "public_authority_page"
   ],
-  "repo_id": "agent-template",
+  "repo_id": "agent-template-proof-node-01",
   "status": "active",
   "version": 1
 }
