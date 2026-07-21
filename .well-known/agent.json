@@ -32,7 +32,7 @@
     "node_topic": "agent-federation-node",
     "peer_discovery": true
   },
-  "name": "Agent Template Proof Node 01",
+  "name": "External Federation Proof Node 01",
   "provider": {
     "organization": "kimeisele"
   },

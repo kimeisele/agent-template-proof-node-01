@@ -6,7 +6,7 @@
     "cross-domain-analysis",
     "open-inquiry"
   ],
-  "display_name": "Agent Template Proof Node 01",
+  "display_name": "External Federation Proof Node 01",
   "endpoints": {
     "authority_descriptor_seeds": "data/federation/authority-descriptor-seeds.json",
     "federation_descriptor": ".well-known/agent-federation.json"
