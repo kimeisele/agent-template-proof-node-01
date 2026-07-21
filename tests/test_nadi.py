@@ -15,9 +15,17 @@ import sys
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
+import pytest
+
 _SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
 if str(_SCRIPTS) not in sys.path:
     sys.path.insert(0, str(_SCRIPTS))
+
+_NADI_KIT_AVAILABLE = importlib.util.find_spec("nadi_kit") is not None
+_NADI_SKIP = pytest.mark.skipif(
+    not _NADI_KIT_AVAILABLE,
+    reason="nadi-kit not installed — install with: pip install -e '.[federation]'"
+)
 
 
 # ── helpers ────────────────────────────────────────────────────────────────
@@ -72,6 +80,7 @@ def _file_tree_snapshot(root: Path) -> dict[str, str]:
 # ── Tests ──────────────────────────────────────────────────────────────────
 
 
+@_NADI_SKIP
 class TestNadiSendViaNadiNode:
     """nadi_send must emit through NadiNode, producing real NadiMessages."""
 
@@ -216,6 +225,7 @@ class TestNadiPathContract:
 import pytest  # noqa: E402
 
 
+@_NADI_SKIP
 class TestDaemonReadOnlyLocal:
     """--once must be strictly read-only: no keys, no files, no mutations."""
 
