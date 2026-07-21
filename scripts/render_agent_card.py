@@ -13,7 +13,7 @@ import json
 import sys
 from pathlib import Path
 
-from federation_utils import resolve_repo_identity
+from federation_utils import resolve_human_display_name, resolve_repo_identity
 
 
 def _load_descriptor(repo_root: Path) -> dict:
@@ -26,7 +26,12 @@ def _load_descriptor(repo_root: Path) -> dict:
 def _load_capability_manifest(repo_root: Path) -> dict:
     caps_path = repo_root / "docs" / "authority" / "capabilities.json"
     if caps_path.exists():
-        return json.loads(caps_path.read_text())
+        try:
+            data = json.loads(caps_path.read_text())
+        except (json.JSONDecodeError, OSError):
+            return {}
+        if isinstance(data, dict):
+            return data
     return {}
 
 
@@ -47,8 +52,8 @@ def main() -> int:
     repo_owner, repo_name = repo.split("/", 1)
     descriptor = _load_descriptor(repo_root)
     manifest = _load_capability_manifest(repo_root)
-    name = descriptor.get("display_name", repo_name)
-    description = manifest.get("description", f"{name} — a federation node in the agent-internet.")
+    name = resolve_human_display_name(repo_root, repo_name)
+    description = manifest.get("description") or f"{name} — a federation node in the agent-internet."
 
     card = {
         "name": name,

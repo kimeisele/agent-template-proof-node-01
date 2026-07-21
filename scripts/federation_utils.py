@@ -419,3 +419,32 @@ def resolve_and_validate_nadi_paths(peer_path: Path) -> NadiPathContract:
         inbox_path=(federation_dir / "nadi_inbox.json").resolve(),
         outbox_path=(federation_dir / "nadi_outbox.json").resolve(),
     )
+
+
+# ── Human display name resolution ────────────────────────────────────────────
+
+
+def resolve_human_display_name(repo_root: Path, repo_name: str) -> str:
+    """Return the committed human-facing node name.
+
+    Resolution order:
+    1. ``docs/authority/capabilities.json`` ``display_name`` field
+    2. slug-derived ``display_name(repo_name)``
+
+    This function reads only committed, persistent files — not
+    ``.federation-setup.json`` (which is gitignored).
+    """
+    manifest_path = repo_root / "docs" / "authority" / "capabilities.json"
+    try:
+        data = json.loads(manifest_path.read_text())
+    except (OSError, json.JSONDecodeError):
+        return display_name(repo_name)
+
+    if not isinstance(data, dict):
+        return display_name(repo_name)
+
+    name = data.get("display_name")
+    if isinstance(name, str) and name.strip():
+        return name.strip()
+
+    return display_name(repo_name)
