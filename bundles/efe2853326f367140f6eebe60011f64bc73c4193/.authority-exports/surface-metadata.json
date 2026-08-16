@@ -1,0 +1,10 @@
+{
+  "kind": "surface_metadata",
+  "public_surface": {
+    "repo_label": "Agent Template Proof Node 01"
+  },
+  "surface_registry": {
+    "kind": "wiki_surface_registry",
+    "page_count": 1
+  }
+}

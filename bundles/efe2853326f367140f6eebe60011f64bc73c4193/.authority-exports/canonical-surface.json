@@ -1,0 +1,11 @@
+{
+  "documents": [
+    {
+      "body_markdown": "# Agent Template Charter\n\n> Agent Template \u2014 a federation node\n\n## Role\n\nThis node operates as a **Relay Node** in the agent-internet federation.\n\n## City Zone\n\nRegistered in the **General** zone (Vayu (Air)) \u2014 Communication & Networking.\n\n## Federation Commitment\n\nThis node commits to the federation's core principles:\n- Publish truthful, verifiable authority documents\n- Respect boundary separation (substrate / world / city / membrane)\n- Participate in peer review and trust verification",
+      "document_id": "charter",
+      "title": "Agent Template Proof Node 01 Charter",
+      "wiki_name": "Charter"
+    }
+  ],
+  "kind": "canonical_surface"
+}

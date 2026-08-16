@@ -1,0 +1,10 @@
+{
+  "kind": "source_surface_registry",
+  "pages": [
+    {
+      "id": "charter",
+      "include_in_sidebar": true,
+      "wiki_name": "Charter"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "artifact_paths": {
+    "canonical_surface": ".authority-exports/canonical-surface.json",
+    "public_summary_registry": ".authority-exports/public-summary-registry.json",
+    "source_surface_registry": ".authority-exports/source-surface-registry.json",
+    "surface_metadata": ".authority-exports/surface-metadata.json"
+  },
+  "authority_exports": [
+    {
+      "artifact_uri": ".authority-exports/canonical-surface.json",
+      "content_sha256": "6abeefcbb683f719bfa761679df0f708b59ad4c6721bf62b741d50cecbee1cc5",
+      "contract_version": 1,
+      "export_id": "agent-template-proof-node-01/canonical_surface",
+      "export_kind": "canonical_surface",
+      "generated_at": 0.0,
+      "labels": {
+        "source_sha": "efe2853326f367140f6eebe60011f64bc73c4193"
+      },
+      "repo_id": "agent-template-proof-node-01",
+      "version": "efe2853326f367140f6eebe60011f64bc73c4193"
+    },
+    {
+      "artifact_uri": ".authority-exports/public-summary-registry.json",
+      "content_sha256": "8ac22378d4df41bb5b5cd822c5b806d678931f57bfa98382533d60311f70e5ca",
+      "contract_version": 1,
+      "export_id": "agent-template-proof-node-01/public_summary_registry",
+      "export_kind": "public_summary_registry",
+      "generated_at": 0.0,
+      "labels": {
+        "source_sha": "efe2853326f367140f6eebe60011f64bc73c4193"
+      },
+      "repo_id": "agent-template-proof-node-01",
+      "version": "efe2853326f367140f6eebe60011f64bc73c4193"
+    },
+    {
+      "artifact_uri": ".authority-exports/source-surface-registry.json",
+      "content_sha256": "aa4fc82daf68c8654af6e85052f0eab02606c13dbdb6462c289047491b1a72b5",
+      "contract_version": 1,
+      "export_id": "agent-template-proof-node-01/source_surface_registry",
+      "export_kind": "source_surface_registry",
+      "generated_at": 0.0,
+      "labels": {
+        "source_sha": "efe2853326f367140f6eebe60011f64bc73c4193"
+      },
+      "repo_id": "agent-template-proof-node-01",
+      "version": "efe2853326f367140f6eebe60011f64bc73c4193"
+    },
+    {
+      "artifact_uri": ".authority-exports/surface-metadata.json",
+      "content_sha256": "fe4cca1e467592e9e8b8ab5d03261278336ff55bd287a1d67e18336ca569e943",
+      "contract_version": 1,
+      "export_id": "agent-template-proof-node-01/surface_metadata",
+      "export_kind": "surface_metadata",
+      "generated_at": 0.0,
+      "labels": {
+        "source_sha": "efe2853326f367140f6eebe60011f64bc73c4193"
+      },
+      "repo_id": "agent-template-proof-node-01",
+      "version": "efe2853326f367140f6eebe60011f64bc73c4193"
+    }
+  ],
+  "contract_version": 1,
+  "generated_at": 0.0,
+  "kind": "source_authority_bundle",
+  "repo_role": {
+    "consumes": [],
+    "exports": [
+      "canonical_surface",
+      "public_summary_registry",
+      "source_surface_registry",
+      "surface_metadata"
+    ],
+    "labels": {
+      "display_name": "Agent Template Proof Node 01"
+    },
+    "owner_boundary": "agent_template_proof_node_01_surface",
+    "publication_targets": [
+      "agent-template-proof-node-01-public-wiki"
+    ],
+    "repo_id": "agent-template-proof-node-01",
+    "role": "normative_source"
+  },
+  "source_sha": "efe2853326f367140f6eebe60011f64bc73c4193"
+}
