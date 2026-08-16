@@ -21,7 +21,7 @@
     "node_topic": "agent-federation-node",
     "peer_discovery": true
   },
-  "name": "Agent Template",
+  "name": "Agent Template Proof Node 01",
   "provider": {
     "organization": "kimeisele"
   },
@@ -32,6 +32,6 @@
       "name": "Authority Publishing"
     }
   ],
-  "url": "https://github.com/kimeisele/agent-template",
+  "url": "https://github.com/kimeisele/agent-template-proof-node-01",
   "version": "1.0.0"
 }
